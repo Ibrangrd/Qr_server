@@ -1,6 +1,6 @@
 require("dotenv").config();
 const express = require("express");
-const  = require("");
+const cors = require("cors");
 const app = express();
 const authRoute = require("./router/auth-router");
 const contactRoute = require("./router/contact-router");
@@ -8,14 +8,14 @@ const adminRoute = require("./router/admin-router");
 const connectDb = require("./utils/db");
 const errorMiddleware = require("./middlewares/error-middleware");
 
-//let's tackle 
-const Options = {
-    origin:[ "http://localhost:5173","https://qrweds.netlify.app"],
+//let's tackle cors
+const corsOptions = {
+    origin:[ "http://localhost:5173" , "https://qrweds.netlify.app"],
     methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
     credentials: true,
 };
 
-app.use((Options));
+app.use(cors(corsOptions));
 
 app.use(express.json());
 
